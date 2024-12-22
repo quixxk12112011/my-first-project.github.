@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глибини Океану</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #1a2d3b;
+            color: white;
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .ocean-container {
+            position: relative;
+            width: 80%;
+            height: 70%;
+            background: linear-gradient(to bottom, #001f3d, #0d3658, #4a7c99, #0b2134);
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 0 auto;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .sea-creature {
+            position: absolute;
+            border-radius: 50%;
+            animation: swim 5s infinite;
+        }
+
+        /* Анімація для морських істот */
+        @keyframes swim {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(300px); }
+            100% { transform: translateX(0); }
+        }
+
+        .sea-creature.fish {
+            width: 50px;
+            height: 20px;
+            background-color: #ff7f50;
+            animation-duration: 7s;
+            bottom: 10%;
+        }
+
+        .sea-creature.jellyfish {
+            width: 40px;
+            height: 50px;
+            background-color: #dda0dd;
+            animation-duration: 6s;
+            bottom: 20%;
+        }
+
+        .sea-creature.shark {
+            width: 100px;
+            height: 40px;
+            background-color: #808080;
+            animation-duration: 10s;
+            bottom: 5%;
+        }
+
+        .depth-marker {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 0;
+            color: #ffffff;
+            font-size: 1.5em;
+            font-weight: bold;
+            padding: 5px 10px;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 5px;
+        }
+
+        .depth-description {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 5%;
+            font-size: 1.2em;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 10px;
+            border-radius: 5px;
+            max-width: 80%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .ocean-container:hover .depth-description {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Глибини Океану</h1>
+
+    <div class="ocean-container">
+        <!-- Океан -->
+        <div class="depth-marker">0 м</div>
+        <div class="depth-description">
+            Це поверхня океану, де живуть різноманітні морські істоти, такі як риби, медузи та інші.
+        </div>
+
+        <div class="sea-creature fish" style="top: 10%"></div>
+        <div class="sea-creature jellyfish" style="top: 20%"></div>
+        <div class="sea-creature shark" style="top: 5%"></div>
+
+        <!-- Глибина -->
+        <div class="depth-marker" style="bottom: 10%;">100 м</div>
+        <div class="depth-description" style="bottom: 10%;">Цей рівень океану — це місце, де зустрічаються різні види риб і морських ссавців.</div>
+
+        <div class="sea-creature fish" style="top: 30%"></div>
+        <div class="sea-creature jellyfish" style="top: 40%"></div>
+
+        <div class="depth-marker" style="bottom: 30%;">500 м</div>
+        <div class="depth-description" style="bottom: 30%;">Тут починаються глибини океану, де живуть риби і істоти, які здатні виживати під великим тиском.</div>
+
+        <div class="sea-creature shark" style="top: 50%"></div>
+
+        <div class="depth-marker" style="bottom: 50%;">1000 м</div>
+        <div class="depth-description" style="bottom: 50%;">У цьому регіоні океану починаються безжиттєві зони. Лише деякі морські істоти здатні існувати на таких глибинах.</div>
+
+        <div class="depth-marker" style="bottom: 70%;">3000 м</div>
+        <div class="depth-description" style="bottom: 70%;">Глибини океану, де майже не доходить світло. Тільки найбільш адаптовані істоти можуть існувати на таких глибинах.</div>
+
+        <div class="depth-marker" style="bottom: 90%;">11000 м</div>
+        <div class="depth-description" style="bottom: 90%;">Це найбільша відома глибина океану — Маріанська западина, глибина більше 11 км.</div>
+    </div>
+
+    <script>
+        // Додавання функціональності: Показ/Приховування опису глибини при наведенні миші
+        const depthMarkers = document.querySelectorAll('.depth-marker');
+        const depthDescriptions = document.querySelectorAll('.depth-description');
+
+        depthMarkers.forEach((marker, index) => {
+            marker.addEventListener('mouseover', () => {
+                depthDescriptions[index].style.opacity = '1';
+            });
+            marker.addEventListener('mouseout', () => {
+                depthDescriptions[index].style.opacity = '0';
+            });
+        });
+    </script>
+
+</body>
+</html>
